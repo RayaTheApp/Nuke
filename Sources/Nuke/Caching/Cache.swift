@@ -47,7 +47,7 @@ public final class Cache<Key: Hashable, Value>: @unchecked Sendable {
     private let memoryPressure: DispatchSourceMemoryPressure
     private var notificationObserver: AnyObject?
 
-    init(costLimit: Int, countLimit: Int) {
+    public init(costLimit: Int = .max, countLimit: Int = .max) {
         self._conf = Configuration(costLimit: costLimit, countLimit: countLimit, ttl: nil, entryCostLimit: 0.1)
 
         self.lock = .allocate(capacity: 1)
