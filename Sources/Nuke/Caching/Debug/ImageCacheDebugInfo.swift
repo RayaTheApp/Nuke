@@ -10,7 +10,7 @@ import UIKit
 
 public struct ImageCacheDebugInfo: Hashable {
 
-  enum ImageType: String, CaseIterable {
+  public enum ImageType: String, CaseIterable {
     case place
     case sliced
     case ripsSmall
@@ -18,14 +18,14 @@ public struct ImageCacheDebugInfo: Hashable {
     case ripsLarge
   }
 
-  let image: UIImage
-  let url: URL?
-  let cost: Int
-  let processorsInfo: String
+  public let image: UIImage
+  public let url: URL?
+  public let cost: Int
+  public let processorsInfo: String
 
   // Determine the image type based off the URL
   // Not the most robust solution, but it provides a solid approximation of the image type
-  var imageType: ImageType? {
+  public var imageType: ImageType? {
     if url?.absoluteString.contains("lh3") == true {
       return .place
     } else if url?.absoluteString.contains("bestFill") == true {
@@ -40,7 +40,7 @@ public struct ImageCacheDebugInfo: Hashable {
     return nil
   }
 
-  var dataSize: String {
+  public var dataSize: String {
     ImageCacheDebugInfo.dataFormatter.string(fromByteCount: Int64(cost))
   }
 
@@ -66,7 +66,7 @@ public struct ImageCacheDebugInfo: Hashable {
     return string
   }
 
-  static let dataFormatter: ByteCountFormatter = {
+  public static let dataFormatter: ByteCountFormatter = {
     let bcf = ByteCountFormatter()
     bcf.allowedUnits = [.useGB, .useMB, .useKB]
     return bcf

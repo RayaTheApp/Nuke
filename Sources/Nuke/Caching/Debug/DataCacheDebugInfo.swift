@@ -14,14 +14,16 @@ import UIKit
 public struct DataCacheDebugInfo: Hashable {
   let url: URL
 
-  var data: Data? { try? Data(contentsOf: url) }
+  
 
-  var image: UIImage? {
+  public var data: Data? { try? Data(contentsOf: url) }
+
+  public var image: UIImage? {
     guard let data = data else { return nil }
     return UIImage(data: data)
   }
 
-  var dataSize: String {
+  public var dataSize: String {
     guard let data = data else { return "n/a" }
     return ImageCacheDebugInfo.dataFormatter.string(fromByteCount: Int64(data.count))
   }
