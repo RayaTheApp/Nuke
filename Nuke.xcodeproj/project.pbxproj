@@ -267,6 +267,8 @@
 		0CF58FF726DAAC3800D2650D /* ImageDownsampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF58FF626DAAC3800D2650D /* ImageDownsampleTests.swift */; };
 		2DFD93B0233A6AB300D84DB9 /* ImagePipelineProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD93AF233A6AB300D84DB9 /* ImagePipelineProcessorTests.swift */; };
 		4480674C2A448C9F00DE7CF8 /* DataPublisherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4480674B2A448C9F00DE7CF8 /* DataPublisherTests.swift */; };
+		B863BA9A2B30F77F0007B9C0 /* DataCacheDebugInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BA992B30F77F0007B9C0 /* DataCacheDebugInfo.swift */; };
+		B863BA9C2B30F7B30007B9C0 /* ImageCacheDebugInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863BA9B2B30F7B30007B9C0 /* ImageCacheDebugInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -539,6 +541,8 @@
 		0CF58FF626DAAC3800D2650D /* ImageDownsampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownsampleTests.swift; sourceTree = "<group>"; };
 		2DFD93AF233A6AB300D84DB9 /* ImagePipelineProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePipelineProcessorTests.swift; sourceTree = "<group>"; };
 		4480674B2A448C9F00DE7CF8 /* DataPublisherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPublisherTests.swift; sourceTree = "<group>"; };
+		B863BA992B30F77F0007B9C0 /* DataCacheDebugInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCacheDebugInfo.swift; sourceTree = "<group>"; };
+		B863BA9B2B30F7B30007B9C0 /* ImageCacheDebugInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheDebugInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -947,6 +951,7 @@
 		0CA4ECD126E68FD300BAC8E5 /* Caching */ = {
 			isa = PBXGroup;
 			children = (
+				B863BA982B30F7690007B9C0 /* Debug */,
 				0CA4ECD226E68FDC00BAC8E5 /* ImageCaching.swift */,
 				0C0FD5D71CA47FE1002A78FB /* ImageCache.swift */,
 				0CA4ECCF26E68FC000BAC8E5 /* DataCaching.swift */,
@@ -1080,6 +1085,15 @@
 				0C179C772282AC50008AB488 /* .swiftlint.yml */,
 			);
 			name = Metadata;
+			sourceTree = "<group>";
+		};
+		B863BA982B30F7690007B9C0 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				B863BA992B30F77F0007B9C0 /* DataCacheDebugInfo.swift */,
+				B863BA9B2B30F7B30007B9C0 /* ImageCacheDebugInfo.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1752,6 +1766,7 @@
 				0CA4ECBA26E6850B00BAC8E5 /* Graphics.swift in Sources */,
 				0CA4ECB426E6844B00BAC8E5 /* ImageProcessors.swift in Sources */,
 				0C2A368B26437BF100F1D000 /* TaskLoadData.swift in Sources */,
+				B863BA9A2B30F77F0007B9C0 /* DataCacheDebugInfo.swift in Sources */,
 				0CA8D8ED2958DA3700EDAA2C /* Atomic.swift in Sources */,
 				0C0FD6041CA47FE1002A78FB /* ImageRequest.swift in Sources */,
 				0CA4EC9926E67CEC00BAC8E5 /* ImageDecoders+Default.swift in Sources */,
@@ -1759,6 +1774,7 @@
 				0CA4ECA126E67D8400BAC8E5 /* AssetType.swift in Sources */,
 				0CF1754C22913F9800A8946E /* ImagePipelineConfiguration.swift in Sources */,
 				0C86AB6A228B3B5100A81BA1 /* ImageTask.swift in Sources */,
+				B863BA9C2B30F7B30007B9C0 /* ImageCacheDebugInfo.swift in Sources */,
 				0C7150091FC9724C00B880AC /* Extensions.swift in Sources */,
 				0CA4ECBE26E685A900BAC8E5 /* ImageProcessors+Circle.swift in Sources */,
 				0CE2D9BA2084FDDD00934B28 /* ImageDecoding.swift in Sources */,
@@ -2301,7 +2317,10 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 774AWVLED8;
 				DOCC_HOSTING_BASE_PATH = /nuke/;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2312,6 +2331,7 @@
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.kean.nuke;
 				PRODUCT_NAME = Nuke;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -2321,7 +2341,10 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 774AWVLED8;
 				DOCC_HOSTING_BASE_PATH = /nuke/;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2331,6 +2354,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.kean.nuke;
 				PRODUCT_NAME = Nuke;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

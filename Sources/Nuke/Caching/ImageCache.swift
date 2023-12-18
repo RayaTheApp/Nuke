@@ -22,6 +22,17 @@ import Cocoa
 public final class ImageCache: ImageCaching {
     private let impl: Cache<ImageCacheKey, ImageContainer>
 
+    public var debugInfo: [ImageCacheDebugInfo] {
+      impl.allItems.map {
+        ImageCacheDebugInfo(
+          image: $0.value.image,
+          url: ImageCacheDebugInfo.urlFrom("\($0.key.description)"),
+          cost: cost(for: $0.value),
+          processorsInfo: $0.key.processors.reduce("") { "\($0), \($1)" }
+        )
+      }
+    }
+
     /// The maximum total cost that the cache can hold.
     public var costLimit: Int {
         get { impl.conf.costLimit }

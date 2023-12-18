@@ -9,7 +9,7 @@ import UIKit.UIApplication
 #endif
 
 // Internal memory-cache implementation.
-final class Cache<Key: Hashable, Value>: @unchecked Sendable {
+public final class Cache<Key: Hashable, Value>: @unchecked Sendable {
     // Can't use `NSCache` because it is not LRU
 
     struct Configuration {
@@ -34,6 +34,10 @@ final class Cache<Key: Hashable, Value>: @unchecked Sendable {
 
     var totalCount: Int {
         withLock { map.count }
+    }
+
+    var allItems: [Entry] {
+      withLock { list.allItems }
     }
 
     private var _totalCost = 0
@@ -196,7 +200,7 @@ final class Cache<Key: Hashable, Value>: @unchecked Sendable {
         return closure()
     }
 
-    private struct Entry {
+    struct Entry {
         let value: Value
         let key: Key
         let cost: Int

@@ -20,6 +20,19 @@ final class LinkedList<Element> {
         last == nil
     }
 
+    var allItems: [Element] {
+      guard let first = first else {
+        return []
+      }
+      var items = [first.value]
+      var node: Node? = first
+      while let next = node?.next {
+        items.append(next.value)
+        node = next
+      }
+      return items
+    }
+
     /// Adds an element to the end of the list.
     @discardableResult
     func append(_ element: Element) -> Node {

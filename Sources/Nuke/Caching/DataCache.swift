@@ -48,6 +48,10 @@ public final class DataCache: DataCaching, @unchecked Sendable {
     /// The time interval between cache sweeps. The default value is 1 hour.
     public var sweepInterval: TimeInterval = 3600
 
+    public var debugInfo: [DataCacheDebugInfo] {
+      contents().map { DataCacheDebugInfo(url: $0.url) }
+    }
+
     // Deprecated in Nuke 12.2
     @available(*, deprecated, message: "It's not recommended to use compression with the popular image formats that already compress the data")
     public var isCompressionEnabled: Bool {
