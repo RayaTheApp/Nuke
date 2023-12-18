@@ -12,9 +12,8 @@ import UIKit
 /// Provides information about the images stored in `DataCache`
 /// It provides the disk URL, the image, and the size of the data for the image
 public struct DataCacheDebugInfo: Hashable {
-  let url: URL
 
-  
+  public let url: URL
 
   public var data: Data? { try? Data(contentsOf: url) }
 

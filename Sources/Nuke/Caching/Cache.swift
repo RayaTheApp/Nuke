@@ -79,7 +79,7 @@ public final class Cache<Key: Hashable, Value>: @unchecked Sendable {
     }
 #endif
 
-    func value(forKey key: Key) -> Value? {
+    public func value(forKey key: Key) -> Value? {
         os_unfair_lock_lock(lock)
         defer { os_unfair_lock_unlock(lock) }
 
@@ -99,7 +99,7 @@ public final class Cache<Key: Hashable, Value>: @unchecked Sendable {
         return node.value.value
     }
 
-    func set(_ value: Value, forKey key: Key, cost: Int = 0, ttl: TimeInterval? = nil) {
+    public func set(_ value: Value, forKey key: Key, cost: Int = 0, ttl: TimeInterval? = nil) {
         os_unfair_lock_lock(lock)
         defer { os_unfair_lock_unlock(lock) }
 
@@ -118,7 +118,7 @@ public final class Cache<Key: Hashable, Value>: @unchecked Sendable {
     }
 
     @discardableResult
-    func removeValue(forKey key: Key) -> Value? {
+    public func removeValue(forKey key: Key) -> Value? {
         os_unfair_lock_lock(lock)
         defer { os_unfair_lock_unlock(lock) }
 
