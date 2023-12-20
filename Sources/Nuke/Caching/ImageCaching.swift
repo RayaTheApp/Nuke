@@ -19,6 +19,10 @@ public protocol ImageCaching: AnyObject, Sendable {
 ///
 /// In general, you don't construct it directly, and use ``ImagePipeline`` or ``ImagePipeline/Cache-swift.struct`` APIs.
 public struct ImageCacheKey: Hashable, Sendable {
+    
+    public var urlString: String?
+    public var processors: [String]?
+
     let key: Inner
 
     // This is faster than using AnyHashable (and it shows in performance tests).
@@ -33,5 +37,7 @@ public struct ImageCacheKey: Hashable, Sendable {
 
     public init(request: ImageRequest) {
         self.key = .default(request.makeImageCacheKey())
+        self.urlString = request.url?.absoluteString
+        self.processors = request.processors.map { $0.identifier }
     }
 }
